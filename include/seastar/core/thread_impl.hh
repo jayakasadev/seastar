@@ -24,6 +24,9 @@
 #include <seastar/core/preempt.hh>
 #include <seastar/util/std-compat.hh>
 #include <setjmp.h>
+#ifdef __APPLE__
+#define _XOPEN_SOURCE
+#endif
 #include <ucontext.h>
 #include <chrono>
 

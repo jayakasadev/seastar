@@ -22,13 +22,21 @@
 #pragma once
 
 #ifndef SEASTAR_MODULE
+#ifdef __APPLE__
+#include <sys/event.h>
+#else
 #include <sys/epoll.h>
 #include <sys/eventfd.h>
+#endif
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
+#ifdef __APPLE__
+#include <time.h>
+#else
 #include <sys/timerfd.h>
+#endif
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <assert.h>
@@ -126,9 +134,15 @@ public:
         return file_desc(fd);
     }
     static file_desc eventfd(unsigned initval, int flags) {
+        #ifdef __APPLE__
+        int fd = kqueue();
+        throw_system_error_on(pipe(event_pipe) == -1, "eventfd");
+        return file_desc(fd);
+        #else
         int fd = ::eventfd(initval, flags);
         throw_system_error_on(fd == -1, "eventfd");
         return file_desc(fd);
+        #endif
     }
     static file_desc epoll_create(int flags = 0) {
         int fd = ::epoll_create1(flags);

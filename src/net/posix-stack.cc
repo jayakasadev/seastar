@@ -30,7 +30,9 @@ module;
 #include <variant>
 
 #include <unistd.h>
+#ifdef __linux__
 #include <linux/if.h>
+#endif
 #include <linux/netlink.h>
 #include <linux/rtnetlink.h>
 #include <arpa/inet.h>

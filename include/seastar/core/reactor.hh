@@ -71,7 +71,9 @@
 #include <unordered_map>
 #include <vector>
 #include <unistd.h>
+#ifdef __linux__
 #include <sys/epoll.h>
+#endif
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/ip.h>

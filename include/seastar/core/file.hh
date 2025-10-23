@@ -37,7 +37,11 @@
 #include <sys/statvfs.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
-#include <linux/fs.h>
+#ifdef __APPLE__
+
+#else
+#include <linux/fs.h> // BLKBSZGET
+#endif
 #include <sys/uio.h>
 #include <unistd.h>
 #include <chrono>

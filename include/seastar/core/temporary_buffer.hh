@@ -26,7 +26,11 @@
 #include <cstddef>
 #include <cstring>
 #include <string_view>
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 #endif
 #include <seastar/core/deleter.hh>
 #include <seastar/util/eclipse.hh>

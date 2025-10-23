@@ -35,7 +35,11 @@
 #include <future>
 #include <iostream>
 
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 
 using namespace seastar;
 

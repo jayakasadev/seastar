@@ -25,7 +25,11 @@ module;
 
 #include <fmt/format.h>
 #include <fmt/ostream.h>
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 #include <string.h>
 #include <ratio>
 #include <optional>

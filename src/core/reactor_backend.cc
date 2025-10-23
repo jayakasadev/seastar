@@ -29,7 +29,9 @@ module;
 #include <utility>
 #include <fcntl.h>
 #include <signal.h>
+#ifdef __linux__
 #include <sys/epoll.h>
+#endif
 #include <poll.h>
 #include <sys/syscall.h>
 #include <sys/resource.h>

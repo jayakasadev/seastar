@@ -49,7 +49,9 @@ module;
 #include <sys/wait.h>
 #include <unistd.h>
 #include <fcntl.h>
+#ifdef __linux__
 #include <sys/eventfd.h>
+#endif
 #include <poll.h>
 #include <netinet/in.h>
 #include <boost/lexical_cast.hpp>

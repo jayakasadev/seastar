@@ -38,7 +38,11 @@ module;
 #include <sys/syscall.h>
 #include <dirent.h>
 #include <linux/types.h> // for xfs, below
+#ifdef __APPLE__
+
+#else
 #include <linux/fs.h> // BLKBSZGET
+#endif
 #include <linux/major.h>
 #include <sys/ioctl.h>
 #include <unistd.h>

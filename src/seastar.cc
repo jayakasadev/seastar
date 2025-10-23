@@ -128,24 +128,36 @@ module;
 #if defined(__x86_64__) || defined(__i386__)
 #include <xmmintrin.h>
 #endif
+#ifdef __linux__
 #include <linux/fs.h>
+#endif
 #include <linux/perf_event.h>
 #include <arpa/inet.h>
+#ifdef __linux__
 #include <sys/epoll.h>
 #include <sys/eventfd.h>
+#endif
 #include <sys/inotify.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
+#ifdef __APPLE__
+#include <time.h>
+#else
 #include <sys/timerfd.h>
+#endif
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <sys/un.h>
 #include <execinfo.h>
 #include <fcntl.h>
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 #include <pthread.h>
 #include <setjmp.h>
 #include <signal.h>

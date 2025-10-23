@@ -30,7 +30,11 @@ module;
 #include <vector>
 #include <queue>
 #include <getopt.h>
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 
 #include <cinttypes>
 #include <rte_config.h>
